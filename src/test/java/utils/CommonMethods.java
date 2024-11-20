@@ -3,8 +3,11 @@ package utils;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -24,15 +27,25 @@ public class CommonMethods extends PageIntializer {
         switch (ConfigReader.read("browser")){
 
             case "Chrome":
-                //ChromeOptions options = new ChromeOptions();
-               // options.addArguments("--headless");
-                driver=new ChromeDriver();
+
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("headless");
+                //artem dice que asi va
+                /*
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--headless=new");
+                WebDriver driver = new ChromeDriver(options);*/
+                driver = new ChromeDriver(options);
                 break;
             case "FireFox":
-                driver=new FirefoxDriver();
+                FirefoxOptions option = new FirefoxOptions();
+                option.addArguments("headless");
+                driver=new FirefoxDriver(option);
                 break;
             case "Edge":
-                driver = new EdgeDriver();
+                EdgeOptions opt=new EdgeOptions();
+                opt.addArguments("headless");
+                driver = new EdgeDriver(opt);
                 break;
             case "Safari":
                 driver = new SafariDriver();

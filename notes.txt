@@ -101,6 +101,19 @@ when we execute the code
    verify
    test
 
+-----------------------------------------
+API
+
+REST Assured follows behavioral driven development approach
+
+Given-prepare the request
+When-making the call/sending the request/hitting the end point
+Then-validation of response
+
+Hamcrest marchers-
+it allows us to validate the key vs value combination using native methods
+
+equalTo() is a native method we generally use
 
 
 
